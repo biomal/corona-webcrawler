@@ -24,7 +24,7 @@ const run = async () => {
   console.log('Parsing news JSON...')
   const news = await newsController.load()
   const json = JSON.stringify(news)
-  await writeFile('web/news.json', json)
+  await writeFile('docs/news.json', json)
 
   console.log('Done.')
 }
