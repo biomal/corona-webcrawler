@@ -27,7 +27,6 @@ const run = async () => {
   await writeFile('web/news.json', json)
 
   console.log('Done.')
-  console.log(util.inspect(news))
 }
 
 run()
