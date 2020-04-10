@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "tsc-watch --onSuccess \"node build/index.js\"",
-    "build": "rimraf build/* && tsc"
+    "build": "rimraf build/* && tsc",
+    "start": "yarn build && node build/index.js"
   },
   "dependencies": {
     "moment": "^2.24.0",
