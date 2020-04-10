@@ -1,0 +1,21 @@
+{
+  "name": "corona-webcrawler",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "tsc-watch --onSuccess \"node build/index.js\"",
+    "build": "rimraf build/* && tsc"
+  },
+  "dependencies": {
+    "moment": "^2.24.0",
+    "nedb": "^1.8.0",
+    "puppeteer": "^2.1.1"
+  },
+  "devDependencies": {
+    "@types/nedb": "^1.8.9",
+    "@types/puppeteer": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "tsc-watch": "^4.2.3",
+    "typescript": "^3.8.3"
+  }
+}
