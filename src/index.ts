@@ -1,5 +1,3 @@
-import util from "util"
-
 import * as googleCrawler from "./crawlers/google"
 import * as g1Crawler from "./crawlers/g1"
 import * as newsController from "./controllers/news"
