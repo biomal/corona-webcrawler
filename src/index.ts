@@ -1,30 +1,37 @@
-import * as googleCrawler from "./crawlers/google"
-import * as g1Crawler from "./crawlers/g1"
+import readline from "readline"
+
 import * as newsController from "./controllers/news"
-import { writeFile } from "./lib/file"
+import * as covidSpController from "./controllers/coronavirus-sp"
 
-const run = async () => {
-  // Webcrawling google results
-  console.log('Google crawling...')
-  const googleResults = await googleCrawler.search('corona virus, são carlos, araraquara site:g1.globo.com')
-  console.log('Done:', googleResults.length, 'results')
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
 
-  // Foreach google search result, crawl info from g1
-  console.log('EPTV crawling...')
-  const eptvResults = await g1Crawler.getInfoFromGoogleResults(googleResults)
-  console.log('Done:', eptvResults.length, 'news')
+console.clear()
+console.log('Please select one of the options below:')
+console.log('1 - Gather covid-19 local news')
+console.log('2 - Download official covid-19 data from sp.gov')
 
-  // Persisting news into db
-  console.log('Persisting news...')
-  await newsController.save(eptvResults)
-
-  // Saving news into a JSON file
-  console.log('Parsing news JSON...')
-  const news = await newsController.load()
-  const json = JSON.stringify(news)
-  await writeFile('docs/news.json', json)
-
-  console.log('Done.')
+const ask = () => {
+  rl.question('Enter an option: ', answer => {
+    const option = parseInt(answer)
+    switch (option) {
+      case 1:
+        console.clear()
+        rl.close()
+        newsController.run()
+        break
+      case 2:
+        console.clear()
+        rl.close()
+        covidSpController.run()
+        break
+      default:
+        console.log('Invalid option, please try again.')
+        ask()
+    }
+  })
 }
 
-run()
+ask()
