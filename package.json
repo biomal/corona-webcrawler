@@ -8,6 +8,7 @@
     "start": "yarn build && node build/index.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "moment": "^2.24.0",
     "nedb": "^1.8.0",
     "pdf2json": "^1.2.0",
